@@ -42,7 +42,13 @@
 
 ## 5. Principles and Practices
 - **Dependency Inversion Principle (DIP)**: Ensures that our services are modular and interchangeable, enhancing flexibility.
-- **Dependency Injection**: Facilitates easier unit testing by allowing dependencies of the service layer to be mocked during tests.
+- **Dependency Injection**: Facilitates easier unit testing by allowing dependencies of the service layer to be mocked during tests
 
-## 6. Deploy
+## 6. Docker
+To run the docker database, run the command at the project's root.
+```bash
+docker-compose up -d
+```
+
+## 7. Deploy
 Deployed on AWS Lamda
