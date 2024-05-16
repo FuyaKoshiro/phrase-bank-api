@@ -1,0 +1,16 @@
+version: "3.8"
+
+services:
+    database:
+        image: postgres
+        ports:
+            - 5433:5432
+        environment:
+            POSTGRES_USER: postgres
+            POSTGRES_PASSWORD: password
+            POSTGRES_DB: youtube-phrase-bank-db
+        volumes:
+            - youtube-phrase-bank-pgdata:/var/lib/postgresql/data
+
+volumes:
+    youtube-phrase-bank-pgdata:
