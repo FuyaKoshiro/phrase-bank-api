@@ -1,4 +1,4 @@
-import { IPhraseService } from "@services/interfaces/IPhraseService";
+import { IPhraseService } from "../../services/interfaces/IPhraseService";
 import { PhraseService } from "./PhraseService";
 
 describe("getPhrasesByUserId", () => {

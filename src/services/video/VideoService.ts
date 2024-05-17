@@ -1,10 +1,10 @@
 import {
   IVideoService,
   VideoToUpsertType,
-} from "@services/interfaces/IVideoService";
+} from "../../services/interfaces/IVideoService";
 import { validateVideoToCreate } from "./utils/VideoServiceHelpers";
 import { Video } from "@prisma/client";
-import { validateId } from "@services/utils/serviceHelpers";
+import { validateId } from "../../services/utils/serviceHelpers";
 
 export class VideoService implements IVideoService {
   constructor(

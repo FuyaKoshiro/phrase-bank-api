@@ -1,4 +1,4 @@
-import { IVideoService } from "@services/interfaces/IVideoService";
+import { IVideoService } from "../../services/interfaces/IVideoService";
 import { Request, Response } from "express";
 
 export class VideoController {

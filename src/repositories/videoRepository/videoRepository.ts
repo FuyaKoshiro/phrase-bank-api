@@ -1,5 +1,5 @@
 import { PrismaClient } from "@prisma/client";
-import { VideoToUpsertType } from "@services/interfaces/IVideoService";
+import { VideoToUpsertType } from "../../services/interfaces/IVideoService";
 
 const prisma = new PrismaClient();
 

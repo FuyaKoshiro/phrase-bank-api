@@ -1,7 +1,7 @@
 import {
   IUserService,
   UserToCreateType,
-} from "@services/interfaces/IUserService";
+} from "../../services/interfaces/IUserService";
 import { UserService } from "./UserService";
 
 describe("getUserById", () => {

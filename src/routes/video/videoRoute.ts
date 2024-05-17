@@ -1,11 +1,11 @@
-import { VideoController } from "@controllers/video/VideoController";
+import { VideoController } from "../../controllers/video/VideoController";
 import { Router } from "express";
 import {
   getVideos,
   countVideos,
   createVideo,
-} from "@repositories/videoRepository/videoRepository";
-import { VideoService } from "@services/video/VideoService";
+} from "../../repositories/videoRepository/videoRepository";
+import { VideoService } from "../../services/video/VideoService";
 
 const videoService = new VideoService(getVideos, countVideos, createVideo);
 const videoController = new VideoController(videoService);

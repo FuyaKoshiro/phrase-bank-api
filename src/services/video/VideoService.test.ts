@@ -1,4 +1,4 @@
-import { IVideoService } from "@services/interfaces/IVideoService";
+import { IVideoService } from "../../services/interfaces/IVideoService";
 import { VideoService } from "./VideoService";
 
 describe("getVideosByUserId", () => {

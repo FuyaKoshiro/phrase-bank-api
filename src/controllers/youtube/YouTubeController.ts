@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import { IYouTubeService } from "@services/interfaces/IYouTubeService";
+import { IYouTubeService } from "../../services/interfaces/IYouTubeService";
 
 export class YouTubeController {
   private youTubeService: IYouTubeService;

@@ -1,5 +1,5 @@
 import { Phrase, PrismaClient } from "@prisma/client";
-import { PhraseToCreateType } from "@services/interfaces/IPhraseService";
+import { PhraseToCreateType } from "../../services/interfaces/IPhraseService";
 
 const prisma = new PrismaClient();
 

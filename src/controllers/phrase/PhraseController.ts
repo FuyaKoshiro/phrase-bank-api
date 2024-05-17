@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import { IPhraseService } from "@services/interfaces/IPhraseService";
+import { IPhraseService } from "../../services/interfaces/IPhraseService";
 
 export class PhraseController {
   private phraseService: IPhraseService;

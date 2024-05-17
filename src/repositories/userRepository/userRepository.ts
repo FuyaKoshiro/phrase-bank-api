@@ -1,5 +1,5 @@
 import { PrismaClient, User } from "@prisma/client";
-import { UserToCreateType } from "@services/interfaces/IUserService";
+import { UserToCreateType } from "../../services/interfaces/IUserService";
 
 const prisma = new PrismaClient();
 

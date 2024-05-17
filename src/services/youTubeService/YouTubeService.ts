@@ -1,7 +1,7 @@
 import {
   IYouTubeService,
   VideoDataFromYouTube,
-} from "@services/interfaces/IYouTubeService";
+} from "../../services/interfaces/IYouTubeService";
 import {
   transformTranscriptToCaptionType,
   validateVideoId,

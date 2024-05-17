@@ -1,10 +1,10 @@
-import { YouTubeController } from "@controllers/youtube/YouTubeController";
+import { YouTubeController } from "../../controllers/youtube/YouTubeController";
 import { Router } from "express";
 import {
   getTranscript,
   getVideoData,
-} from "@repositories/youTubeRepository/youTubeRepository";
-import { YouTubeService } from "@services/youTubeService/YouTubeService";
+} from "../../repositories/youTubeRepository/youTubeRepository";
+import { YouTubeService } from "../../services/youTubeService/YouTubeService";
 
 const youTubeService = new YouTubeService(getTranscript, getVideoData);
 const youTubeController = new YouTubeController(youTubeService);

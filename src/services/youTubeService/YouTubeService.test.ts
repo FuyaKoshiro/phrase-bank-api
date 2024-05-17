@@ -1,4 +1,4 @@
-import { IYouTubeService } from "@services/interfaces/IYouTubeService";
+import { IYouTubeService } from "../../services/interfaces/IYouTubeService";
 import { YouTubeService } from "./YouTubeService";
 
 describe("getCaptions", () => {

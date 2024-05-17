@@ -2,12 +2,12 @@ import { Phrase } from "@prisma/client";
 import {
   IPhraseService,
   PhraseToCreateType,
-} from "@services/interfaces/IPhraseService";
+} from "../../services/interfaces/IPhraseService";
 import {
   modifyPhraseToCreate,
   validatePhraseToCreate,
 } from "./utils/phraseServiceHelpers";
-import { validateId } from "@services/utils/serviceHelpers";
+import { validateId } from "../../services/utils/serviceHelpers";
 
 export class PhraseService implements IPhraseService {
   constructor(

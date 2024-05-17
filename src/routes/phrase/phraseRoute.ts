@@ -1,12 +1,12 @@
-import { PhraseService } from "@services/phrase/PhraseService";
-import { PhraseController } from "@controllers/phrase/PhraseController";
+import { PhraseService } from "../../services/phrase/PhraseService";
+import { PhraseController } from "../../controllers/phrase/PhraseController";
 import { Router } from "express";
 import {
   countPhrase,
   createPhrase,
   deletePhrase,
   getPhrasesByUserId,
-} from "@repositories/phraseRepository/phraseRepository";
+} from "../../repositories/phraseRepository/phraseRepository";
 
 const phraseService = new PhraseService(
   getPhrasesByUserId,

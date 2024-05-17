@@ -2,9 +2,9 @@ import { User } from "@prisma/client";
 import {
   IUserService,
   UserToCreateType,
-} from "@services/interfaces/IUserService";
+} from "../../services/interfaces/IUserService";
 import { validateUserToCreate } from "./utils/userServiceHelpers";
-import { validateId } from "@services/utils/serviceHelpers";
+import { validateId } from "../../services/utils/serviceHelpers";
 
 export class UserService implements IUserService {
   constructor(
