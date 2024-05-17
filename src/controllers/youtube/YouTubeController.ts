@@ -14,6 +14,7 @@ export class YouTubeController {
       const captions = await this.youTubeService.getCaptions(videoId);
       res.status(200).json(captions);
     } catch (error: any) {
+      console.log(error.message);
       res.status(400).json("Failed to retrieve captions");
     }
   };
@@ -24,6 +25,7 @@ export class YouTubeController {
       const videoData = await this.youTubeService.getVideoData(videoId);
       res.status(200).json(videoData);
     } catch (error: any) {
+      console.log(error.message);
       res.status(400).json("Failed to retrieve video data");
     }
   };

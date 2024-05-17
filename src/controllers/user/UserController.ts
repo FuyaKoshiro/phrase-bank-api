@@ -18,6 +18,7 @@ export class UserController {
         return;
       }
     } catch (error: any) {
+      console.log(error);
       res.status(400).json("Failed to retrieve user data");
     }
   };
@@ -28,6 +29,7 @@ export class UserController {
       const userExists = await this.userService.checkIfUserExists(userId);
       res.status(200).json(userExists);
     } catch (error: any) {
+      console.log(error);
       res.status(400).json("Failed to check if user exists");
     }
   };
@@ -38,6 +40,7 @@ export class UserController {
       const user = await this.userService.createUser(userData);
       res.status(200).json(user);
     } catch (error: any) {
+      console.log(error);
       res.status(400).json("Failed to create user");
     }
   };

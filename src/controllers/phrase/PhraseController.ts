@@ -14,6 +14,7 @@ export class PhraseController {
       const phrases = await this.phraseService.getPhrasesByUserId(userId);
       res.status(200).json(phrases);
     } catch (error: any) {
+      console.log(error.message);
       res.status(400).json("Failed to retrieve phrases");
     }
   };
@@ -29,7 +30,8 @@ export class PhraseController {
         startNumber
       );
       res.status(200).json(phraseExists);
-    } catch (_) {
+    } catch (error: any) {
+      console.log(error.message);
       res.status(400).json("Failed to check if phrase exists");
     }
   };
@@ -39,7 +41,8 @@ export class PhraseController {
       const phrase = req.body;
       const createdPhrase = await this.phraseService.createPhrase(phrase);
       res.status(201).json(createdPhrase);
-    } catch (_) {
+    } catch (error: any) {
+      console.log(error.message);
       res.status(400).json("Failed to create phrase");
     }
   };
@@ -47,10 +50,10 @@ export class PhraseController {
   deletePhrase = async (req: Request, res: Response): Promise<void> => {
     try {
       const phraseId = req.params.phrase_id as string;
-      console.log("phraseId", phraseId);
       await this.phraseService.deletePhrase(phraseId);
       res.status(200).json("Phrase deleted");
-    } catch (_) {
+    } catch (error: any) {
+      console.log(error.message);
       res.status(400).json("Failed to delete phrase");
     }
   };

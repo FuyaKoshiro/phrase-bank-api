@@ -14,7 +14,7 @@ export class VideoController {
       const video = await this.videoService.getVideos(videoIds);
       res.status(200).json(video);
     } catch (error: any) {
-      res.statusMessage = error.message;
+      console.log(error);
       res.status(400).json("Failed to retrieve video data");
     }
   };
@@ -36,7 +36,7 @@ export class VideoController {
       const video = await this.videoService.createVideo(videoData);
       res.status(200).json(video);
     } catch (error: any) {
-      res.statusMessage = error.message;
+      console.log(error);
       res.status(400).json("Failed to create video");
     }
   };
