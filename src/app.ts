@@ -4,6 +4,7 @@ import cors from "cors";
 import bodyParser from "body-parser";
 import dotenv from "dotenv";
 import serverless from "serverless-http";
+import audit from 'express-requests-logger'
 
 export const app = express();
 dotenv.config();
@@ -14,6 +15,7 @@ app.use((req, res, next) => {
   res.setHeader("Content-Type", "application/json");
   next();
 });
+app.use(audit())
 
 app.use("/", routes);
 
