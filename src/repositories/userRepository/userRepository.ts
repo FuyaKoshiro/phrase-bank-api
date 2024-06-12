@@ -14,7 +14,7 @@ export const getUser = async (userId: string) => {
     throw new Error("User not found");
   }
 
-  return response as User;
+  return response;
 };
 
 export const countUser = async (userId: string) => {
