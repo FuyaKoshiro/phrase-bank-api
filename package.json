@@ -10,7 +10,8 @@
     "test": "jest --coverage",
     "generate": "prisma generate",
     "migrate": "prisma migrate dev",
-    "studio": "prisma studio"
+    "studio": "prisma studio",
+    "deploy": "serverless deploy"
   },
   "keywords": [],
   "author": "",
