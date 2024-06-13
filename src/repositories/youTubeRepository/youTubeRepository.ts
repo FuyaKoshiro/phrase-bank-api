@@ -18,7 +18,6 @@ export async function getVideoData(videoId: string) {
       `https://www.googleapis.com/youtube/v3/videos?part=snippet&id=${videoId}&key=${process.env.YOUTUBE_API_KEY}`
     );  
 
-    console.log(JSON.stringify(response.data, null, 2));
     const data = videoMetaDataSchema.parse(response.data);
     const videoData = {
       videoId: data.items[0].id,
