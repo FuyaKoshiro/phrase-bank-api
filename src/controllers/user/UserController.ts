@@ -13,7 +13,6 @@ export class UserController {
       const userId = req.body.userId as string;
       if (userId) {
         const user = await this.userService.getUser(userId);
-        console.log("user to return", user);
         res.status(200).json(user);
         return;
       }
