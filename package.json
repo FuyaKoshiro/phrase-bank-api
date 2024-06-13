@@ -11,7 +11,7 @@
     "generate": "prisma generate",
     "migrate": "prisma migrate dev",
     "studio": "prisma studio",
-    "deploy": "serverless deploy"
+    "deploy": "npm run build && serverless deploy"
   },
   "keywords": [],
   "author": "",
