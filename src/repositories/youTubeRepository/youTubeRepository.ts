@@ -7,6 +7,7 @@ import {
   videoMetaDataSchema,
 } from "./youTubeRepositorySchema";
 import { z } from "zod";
+import { convertSpecialCharactersToNormal } from "./utils/youTubeRepositoryHelpers";
 
 export async function getTranscript(
   videoId: string,
@@ -16,7 +17,14 @@ export async function getTranscript(
     const data = await YoutubeTranscript.fetchTranscript(videoId, {
       lang: language,
     });
-    return z.array(transcriptSchema).parse(data);
+    const parsedData = z.array(transcriptSchema).parse(data);
+    const parsedDataWithNormalizedText = parsedData.map((transcript) => {
+      return {
+        ...transcript,
+        text: convertSpecialCharactersToNormal(transcript.text),
+      };
+    });
+    return parsedDataWithNormalizedText;
   } catch (error: any) {
     throw new Error(error.message);
   }
@@ -38,5 +46,3 @@ export async function getVideoData(videoId: string) {
     throw new Error(error.message);
   }
 }
-
-getTranscript("SO76gUj1coY", "en").then((data) => console.log(data));
