@@ -1,5 +1,5 @@
 import axios from "axios";
-import { YoutubeTranscript, TranscriptResponse } from "youtube-transcript";
+import { YoutubeTranscript } from "youtube-transcript";
 import {
   Language,
   transcriptSchema,
