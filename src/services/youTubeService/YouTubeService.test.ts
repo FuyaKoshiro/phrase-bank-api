@@ -18,7 +18,11 @@ describe("getCaptions", () => {
     const mockedGetTranscripts = jest.fn();
     mockedGetTranscripts.mockResolvedValue(mockedCaptions);
 
-    youTubeService = new YouTubeService(mockedGetTranscripts, jest.fn());
+    youTubeService = new YouTubeService(
+      mockedGetTranscripts,
+      jest.fn(),
+      jest.fn()
+    );
   });
 
   it("given a valid video id, should return captions", async () => {
@@ -58,7 +62,11 @@ describe("getVideoData", () => {
     const mockedGetVideoData = jest.fn();
     mockedGetVideoData.mockResolvedValue(mockedVideoData);
 
-    youTubeService = new YouTubeService(jest.fn(), mockedGetVideoData);
+    youTubeService = new YouTubeService(
+      jest.fn(),
+      mockedGetVideoData,
+      jest.fn()
+    );
   });
 
   it("given a valid video id, should return video data", async () => {
@@ -74,5 +82,93 @@ describe("getVideoData", () => {
     await expect(async () => {
       await youTubeService.getVideoData(videoId);
     }).rejects.toThrow();
+  });
+});
+
+describe("searchVideos", () => {
+  let youTubeService: IYouTubeService;
+
+  const mockedSearchResults = {
+    kind: "youtube#searchListResponse",
+    etag: "etag1",
+    nextPageToken: "nextPageToken1",
+    regionCode: "regionCode1",
+    pageInfo: {
+      totalResults: 100,
+      resultsPerPage: 10,
+    },
+    items: [
+      {
+        kind: "video",
+        etag: "etag1",
+        id: {
+          kind: "video",
+          videoId: "videoId1",
+        },
+        snippet: {
+          publishedAt: new Date("2022-01-01T00:00:00Z"),
+          channelId: "channelId1",
+          title: "title1",
+          description: "description1",
+          thumbnails: {
+            default: {
+              url: "thumbnailUrl1",
+              width: 120,
+              height: 90,
+            },
+            medium: {
+              url: "thumbnailUrl1_medium",
+              width: 320,
+              height: 180,
+            },
+            high: {
+              url: "thumbnailUrl1_high",
+              width: 480,
+              height: 360,
+            },
+          },
+          channelTitle: "channelTitle1",
+          liveBroadcastContent: "liveBroadcastContent1",
+          publishTime: new Date("2022-01-01T00:00:00Z"),
+        },
+      },
+    ],
+  };
+
+  beforeEach(() => {
+    jest.clearAllMocks();
+
+    const mockedSearchVideos = jest.fn();
+    mockedSearchVideos.mockResolvedValue(mockedSearchResults);
+
+    youTubeService = new YouTubeService(
+      jest.fn(),
+      jest.fn(),
+      mockedSearchVideos
+    );
+  });
+
+  it("given a valid search query, should return search results", async () => {
+    const searchQuery = "valid search query";
+    const startIndex = 0;
+
+    const searchResults = await youTubeService.searchVideos(
+      searchQuery,
+      startIndex
+    );
+    expect(searchResults).toEqual([
+      {
+        videoId: "videoId1",
+        thumbnail: {
+          url: "thumbnailUrl1",
+          width: 120,
+          height: 90,
+        },
+        title: "title1",
+        publishedAt: new Date("2022-01-01T00:00:00Z"),
+        channelTitle: "channelTitle1",
+        description: "description1",
+      },
+    ]);
   });
 });

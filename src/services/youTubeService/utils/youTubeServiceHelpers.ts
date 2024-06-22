@@ -1,3 +1,5 @@
+import { YouTubeSearchResponse } from "@repositories/youTubeRepository/youTubeRepositorySchema";
+import { TransformedYouTubeSearchResponseItem } from "@services/interfaces/IYouTubeService";
 import { TranscriptResponse } from "youtube-transcript";
 import { z } from "zod";
 
@@ -22,6 +24,21 @@ export function transformTranscriptToCaptionType(
       text: transcript.text,
       start: start,
       end: end,
+    };
+  });
+}
+
+export function transformSearchResults(
+  response: YouTubeSearchResponse
+): TransformedYouTubeSearchResponseItem[] {
+  return response.items.map((item) => {
+    return {
+      videoId: item.id.videoId,
+      thumbnail: item.snippet.thumbnails.default,
+      title: item.snippet.title,
+      publishedAt: item.snippet.publishedAt,
+      channelTitle: item.snippet.channelTitle,
+      description: item.snippet.description,
     };
   });
 }
