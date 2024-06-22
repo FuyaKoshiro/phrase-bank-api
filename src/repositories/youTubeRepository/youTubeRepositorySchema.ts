@@ -1,5 +1,15 @@
 import { z } from "zod";
 
+export type Language = "en";
+
+export const transcriptSchema = z.object({
+  text: z.string(),
+  duration: z.number(),
+  offset: z.number(),
+  lang: z.string().optional(),
+});
+export type TranscriptType = z.infer<typeof transcriptSchema>;
+
 export const videoMetaDataSchema = z.object({
   items: z.array(
     z.object({
@@ -50,3 +60,8 @@ export const videoMetaDataSchema = z.object({
     })
   ),
 });
+
+export type VideoDataFromYouTube = {
+  videoId: string;
+  title: string;
+}

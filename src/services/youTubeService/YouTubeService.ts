@@ -1,16 +1,16 @@
 import {
-  IYouTubeService,
+  TranscriptType,
   VideoDataFromYouTube,
-} from "../../services/interfaces/IYouTubeService";
+} from "@repositories/youTubeRepository/youTubeRepositorySchema";
+import { IYouTubeService } from "../../services/interfaces/IYouTubeService";
 import {
   transformTranscriptToCaptionType,
   validateVideoId,
 } from "./utils/youTubeServiceHelpers";
-import { TranscriptResponse } from "youtube-transcript";
 
 export class YouTubeService implements IYouTubeService {
   constructor(
-    private getTranscriptFn: (videoId: string) => Promise<TranscriptResponse[]>,
+    private getTranscriptFn: (videoId: string) => Promise<TranscriptType[]>,
     private getVideoDataFn: (videoId: string) => Promise<VideoDataFromYouTube>
   ) {}
 
