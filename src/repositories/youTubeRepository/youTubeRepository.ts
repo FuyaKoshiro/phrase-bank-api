@@ -52,7 +52,7 @@ export async function getVideoData(videoId: string) {
 export async function searchVideos(searchQuery: string, startIndex: number) {
   try {
     const response = await axios.get(
-      `https://www.googleapis.com/youtube/v3/search?part=snippet&q=${searchQuery}&type=video&key=${process.env.YOUTUBE_API_KEY}&maxResults=15`
+      `https://www.googleapis.com/youtube/v3/search?part=snippet&q=${searchQuery}&type=video&key=${process.env.YOUTUBE_API_KEY}&maxResults=7`
     );
     const data = youTubeSearchResponseSchema.parse(response.data);
     return data;
