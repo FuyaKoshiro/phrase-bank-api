@@ -1,8 +1,11 @@
 import { TranscriptResponse } from "youtube-transcript";
 import {
+  transformSearchResults,
   transformTranscriptToCaptionType,
   validateVideoId,
 } from "./youTubeServiceHelpers";
+import { YouTubeSearchResponse } from "@repositories/youTubeRepository/youTubeRepositorySchema";
+import { TransformedYouTubeSearchResponseItem } from "@services/interfaces/IYouTubeService";
 
 describe("validateVideoId", () => {
   it("should return the video id if it is valid", () => {
@@ -43,5 +46,76 @@ describe("transformTranscriptToCaptionType", () => {
 
     const captions = transformTranscriptToCaptionType(transcripts);
     expect(captions).toEqual([]);
+  });
+});
+
+describe("transformSearchResults", () => {
+  it("should transform search results into the expected format", () => {
+    const response: YouTubeSearchResponse = {
+      kind: "youtube#searchListResponse",
+      etag: "etag1",
+      nextPageToken: "nextPageToken1",
+      regionCode: "regionCode1",
+      pageInfo: {
+        totalResults: 100,
+        resultsPerPage: 10,
+      },
+      items: [
+        {
+          kind: "video",
+          etag: "etag1",
+          id: {
+            kind: "video",
+            videoId: "videoId1",
+          },
+          snippet: {
+            publishedAt: new Date("2022-01-01T00:00:00Z"),
+            channelId: "channelId1",
+            title: "title1",
+            description: "description1",
+            thumbnails: {
+              default: {
+                url: "thumbnailUrl1",
+                width: 120,
+                height: 90,
+              },
+              medium: {
+                url: "thumbnailUrl1_medium",
+                width: 320,
+                height: 180,
+              },
+              high: {
+                url: "thumbnailUrl1_high",
+                width: 480,
+                height: 360,
+              },
+            },
+            channelTitle: "channelTitle1",
+            liveBroadcastContent: "liveBroadcastContent1",
+            publishTime: new Date("2022-01-01T00:00:00Z"),
+          },
+        },
+      ],
+    };
+
+    const expectedTransformedResponse: TransformedYouTubeSearchResponseItem[] =
+      [
+        {
+          videoId: "videoId1",
+          thumbnail: {
+            url: "thumbnailUrl1",
+            width: 120,
+            height: 90,
+          },
+
+          title: "title1",
+          publishedAt: new Date("2022-01-01T00:00:00Z"),
+          channelTitle: "channelTitle1",
+          description: "description1",
+        },
+      ];
+
+    const transformedResponse = transformSearchResults(response);
+    expect(transformedResponse).toEqual(expectedTransformedResponse);
   });
 });
