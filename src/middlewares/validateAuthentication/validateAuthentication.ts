@@ -1,10 +1,11 @@
+import { VerifyIdTokenResponse } from "@repositories/authRepository/schema";
 import { Request, Response, NextFunction } from "express";
 
 export async function validateAuthentication(
   req: Request,
   res: Response,
   next: NextFunction,
-  verifyIdTokenFn: (token: string) => Promise<any>
+  verifyIdTokenFn: (token: string) => Promise<VerifyIdTokenResponse | null>
 ) {
   try {
     const token = req.headers.authorization;

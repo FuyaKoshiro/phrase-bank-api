@@ -8,28 +8,13 @@ import { verifyIdToken } from "../repositories/authRepository/authRepository";
 
 export const defaultRoute = Router();
 
-defaultRoute.use((req: Request, res: Response, next: NextFunction) =>
-  validateAuthentication(req, res, next, verifyIdToken)
-);
+defaultRoute.use(async (req: Request, res: Response, next: NextFunction) => {
+  await validateAuthentication(req, res, next, verifyIdToken);
+});
 
-defaultRoute.use(
-  "/phrase",
-  (req: Request, res: Response, next: NextFunction) =>
-    validateAuthentication(req, res, next, verifyIdToken),
-  phraseRoute
-);
+defaultRoute.use("/phrase", phraseRoute);
 defaultRoute.use("/user", userRoute);
-defaultRoute.use(
-  "/youtube",
-  (req: Request, res: Response, next: NextFunction) =>
-    validateAuthentication(req, res, next, verifyIdToken),
-  youTubeRoute
-);
-defaultRoute.use(
-  "/video",
-  (req: Request, res: Response, next: NextFunction) =>
-    validateAuthentication(req, res, next, verifyIdToken),
-  videoRoute
-);
+defaultRoute.use("/youtube", youTubeRoute);
+defaultRoute.use("/video", videoRoute);
 
 export default defaultRoute;

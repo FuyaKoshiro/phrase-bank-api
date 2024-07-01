@@ -1,5 +1,5 @@
-import { VerifyIdTokenResponse } from "@services/interfaces/IAuthService";
 import admin from "../../configs/firebase";
+import { VerifyIdTokenResponse } from "./schema";
 
 export const verifyIdToken = async (
   token: string
