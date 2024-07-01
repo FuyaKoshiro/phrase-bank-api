@@ -34,7 +34,7 @@ export function transformSearchResults(
   return response.items.map((item) => {
     return {
       videoId: item.id.videoId,
-      thumbnail: item.snippet.thumbnails.default,
+      thumbnail: item.snippet.thumbnails.high,
       title: item.snippet.title,
       publishedAt: item.snippet.publishedAt,
       channelTitle: item.snippet.channelTitle,
