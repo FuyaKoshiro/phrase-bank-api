@@ -1,4 +1,4 @@
-import { verifyIdToken } from "@repositories/authRepository/authRepository";
+import { verifyIdToken } from "../../repositories/authRepository/authRepository";
 import {
   IAuthService,
   VerifyIdTokenResponse,
