@@ -103,9 +103,9 @@ describe("transformSearchResults", () => {
         {
           videoId: "videoId1",
           thumbnail: {
-            url: "thumbnailUrl1",
-            width: 120,
-            height: 90,
+            url: "thumbnailUrl1_high",
+            width: 480,
+            height: 360,
           },
 
           title: "title1",
