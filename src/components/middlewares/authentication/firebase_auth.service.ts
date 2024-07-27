@@ -1,4 +1,4 @@
-import admin from "configs/firebase";
+import admin from "../../../configs/firebase";
 import { z } from "zod";
 
 class FirebaseAuthService {

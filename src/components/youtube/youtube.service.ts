@@ -7,8 +7,8 @@ import {
 } from "./youtube.interface";
 import { z } from "zod";
 import axios from "axios";
-import { convertSpecialCharactersToNormal } from "./../../repositories/youTubeRepository/utils/youTubeRepositoryHelpers";
 import {
+  convertSpecialCharactersToNormal,
   transformSearchResults,
   transformTranscriptToCaptionType,
 } from "./youtube.helpers";
